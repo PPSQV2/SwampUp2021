@@ -76,7 +76,7 @@ pipelines:
         type: PublishBuildInfo
         configuration:
           forceXrayScan: true              # optional  
-          #failOnScan: false                 # default true
+          failOnScan: true                 # default true
           inputSteps:
             - name: mvn_build_step
           outputResources:
