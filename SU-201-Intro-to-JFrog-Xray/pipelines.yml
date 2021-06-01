@@ -81,3 +81,24 @@ pipelines:
             - name: mvn_build_step
           outputResources:
             - name: mvn_build_info
+
+      - name: pipeline_scan
+        type: XrayScan
+        configuration:
+          failOnScan: true
+          inputResources:
+            - name: BuildInfo_resource
+                trigger: false
+          #outputResources:
+          #  - name:
+
+        execution:
+          onStart:
+            - echo "Preparing for work..."
+            - echo "Preparing build environment"
+          onSuccess:
+            - echo "Job well done!"
+          onFailure:
+            - echo "uh oh, something went wrong"
+          onComplete:
+            - echo "Cleaning up some stuff"
